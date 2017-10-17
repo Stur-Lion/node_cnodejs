@@ -1,0 +1,56 @@
+<%-layout('layout')%>
+<div id="content">
+	<div class="panel">
+		<div class="header">
+			<a href="/" class='topic-tab current-tab'>全部</a>
+			<a href="/?tab=tab1" class='topic-tab'>精华</a>
+			<a href="/?tab=tab2" class='topic-tab'>分享</a>
+		</div>
+		<div class="inner">
+			<div id="topic_list">
+				<%-partial('./topic/list', {collection: topics, as: 'topic'})%>
+			</div>
+			<div class="pagination">
+				<ul>
+					<li>
+						<a href='/?tab=<%=tab%>&page=1'>&lt;&lt;</a>
+					</li>
+					<% if(page-3>1){%>
+					<li>
+						<a>......</a>
+					</li>
+					<%}%>
+					<%
+						var i = 3;
+						while(i>=1){
+							if(page-i>=1){%>
+							<li><a href='/?tab=<%=tab%>&page=<%=page-i%>'><%=page-i%></a></li>
+							<%}
+							i--
+						}
+					%>
+					<li class='disabled active'>
+						<a href='/?tab=<%=tab%>&page=<%=page%>'><%=page%></a>
+					</li>
+					<%
+						var i = 1;
+						while(i<=3){
+							if(page+i<=pageCount){%>
+							<li><a href='/?tab=<%=tab%>&page=<%=page+i%>'><%=page+i%></a></li>
+							<%}
+							i++
+						}
+					%>
+					<% if(page+3<pageCount){%>
+					<li>
+						<a>......</a>
+					</li>
+					<%}%>
+					<li>
+						<a href='/?tab=<%=tab%>&page=<%=pageCount%>'>&gt;&gt;</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

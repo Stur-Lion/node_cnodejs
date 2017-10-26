@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>cnodejs</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/Stylesheets/base.css"/>
+    <link rel="stylesheet" href="/Stylesheets/style.css"/>
     <script src="/javascripts/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/javascripts/commom.js"></script>
 </head>
 <body>
 <div class="haeder"><%- partial('header') %></div>
-<div id="main"></div>
+<div id="main">
+    <%- body %>
+</div>
 </body>
 </html>

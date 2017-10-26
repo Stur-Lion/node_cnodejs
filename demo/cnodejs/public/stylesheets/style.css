@@ -1,8 +1,51 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/*header*/
+.haeder .navbar{
+  background-color: #444;
+}
+.haeder .navbar .brand{
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 15px;
+}
+.navbar-form{
+  margin-top: 10px;
+}
+#head_input{
+  border-radius: 20px;
+  padding: 3px 20px;
+  height: 26px;
+  background-color: #888;
+  border: none;
+  outline: none;
+}
+#head_input:focus{
+  background-color: #fff;
 }
 
-a {
-  color: #00B7FF;
+/*×¢²áµÇÂ¼*/
+.panel-heading span{
+  color: #80bd01;
+}
+.input-group{
+  display: inline-block;
+  width: 100%;
+}
+.sign_form {
+  width: 400px;
+  display: block;
+  margin: 20px auto;
+}
+.panel .panel-body li{
+  margin-top: 10px;
+}
+.sign_form .input-group span{
+  min-width: 80px;
+  display: inline-block;
+  text-align: right;
+  padding-right: 20px;
+}
+.sign_form .input-group input{
+  padding: 3px 12px;
+  width: 300px;
+  border: 1px solid #ccc;
 }

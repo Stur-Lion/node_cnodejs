@@ -1,0 +1,16 @@
+body{ margin: 0;padding: 0;font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;overflow: hidden;font-size: 14px;
+    background-color: #e1e1e1;}
+body,html{-webkit-text-size-adjust: none;width: 100%;height: 100%;}
+*{text-decoration: none;list-style: none;}
+img{border: 0px;}
+ul,li,dl,dd,dt,p,ol,h1,h2,h3,h4,h5{font-size: 14px;font-weight: 100;padding: 0;margin: 0;}
+.wrap{margin: 0 auto;}
+.fl{float: left;}
+.fr{float: right;}
+.index{overflow: hidden;}
+.clr{clear:both; height:0px; width:100%; font-size:1px; line-height:0px; visibility:hidden; overflow:hidden;}
+.pointer{cursor:pointer;}
+a,input,button{ outline:none; }
+::-moz-focus-inner{border:0px;}
+a{color: #000;}
+.wrapper{clear: both;width: 100%;}

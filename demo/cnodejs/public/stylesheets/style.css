@@ -22,6 +22,21 @@
   background-color: #fff;
 }
 
+/*Ê×Ò³*/
+.indexPage .panel-heading ul li{
+  float: left;
+  color: #80bd01;
+  padding: 2px 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.indexPage .panel-heading ul li.active{
+  background-color: #80bd01;
+  color: white;
+}
+
+
 /*×¢²áµÇÂ¼*/
 .panel-heading span{
   color: #80bd01;

@@ -6,8 +6,7 @@ exports.showSignup = function (req, res, next) {
 
 /*注册*/
 exports.signup = function (req, res, next) {
-    var formData = req.body
-    var hasEmpty = false
+    var formData = req.body;
     for(var k in formData){
         if(formData[k]==''){
             res.send({retcode:0,data:[],info:[k+'为空']})

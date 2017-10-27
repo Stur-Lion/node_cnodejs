@@ -5,7 +5,7 @@
         <div class="col-xs-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <ul class="clearfix">
+                    <ul class="topChange clearfix">
                         <li class="active">全部</li>
                         <li>精华</li>
                         <li>分享</li>
@@ -42,39 +42,8 @@
 
 <script>
     $(function () {
-        $('.btn-primary').on('click',function(){
-            var data={
-                name:$('#form_name').val(),
-                email:$('#form_email').val(),
-                phone:$('#form_tel').val(),
-                passord:$('#form_psd').val(),
-            }
-            var flag = true
-            for(var k in data){
-                if(data[k]==''){
-                    flag = false
-                }
-            }
-            console.log(data);
-            if(flag){
-                /*ajaxrequest('/signin','POST',data,function(res){
-
-                 },function(res){
-
-                 })*/
-                $.ajax({
-                    url:'/signin',
-                    type:'POST',
-                    dataType:'JSON',
-                    data:data,
-                    success:function(result){
-
-                    },
-                    error:function(res){
-
-                    }
-                })
-            }
+        $('.topChange li').click(function(){
+            $(this).addClass('active').siblings('li').removeClass('active')
         })
     })
 </script>

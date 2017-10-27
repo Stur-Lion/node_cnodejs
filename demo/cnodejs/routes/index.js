@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var signController = require('./../controllers/sign.js')
 
 
 /* GET home page. */
@@ -20,20 +21,12 @@ router.get('/about', function(req, res, next) {
   res.render('about', {  });
 });
 /* ×¢²áÒ³Ãæ */
-router.get('/sign', function(req, res, next) {
-  res.render('sign', {  });
-});
+router.get('/sign', signController.showSignup);
 /*×¢²áÇëÇó*/
-router.post('/signin', function(req, res, next) {
-  console.log(req.body);
-});
+router.post('/signin', signController.signup);
 /*µÇÂ¼Ò³Ãæ*/
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Express' });
-});
+router.get('/login', signController.showLoginin);
 /*µÇÂ¼ÇëÇó*/
-router.post('/loginin', function(req, res, next) {
-
-});
+router.post('/loginin', signController.loginin);
 
 module.exports = router;

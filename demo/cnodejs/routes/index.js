@@ -4,29 +4,29 @@ var signController = require('./../controllers/sign.js')
 
 
 /* GET home page. */
-/*Ê×Ò³*/
+/*é¦–é¡µ*/
 router.get('/', function(req, res, next) {
   res.render('index', {  });
 });
-/*ĞÂÊÖÈëÃÅ Ò³Ãæ*/
+/* æ–°æ‰‹å…¥é—¨ é¡µé¢ */
 router.get('/newsign', function(req, res, next) {
   res.render('newsign', {  });
 });
-/*API Ò³Ãæ*/
+/*API é¡µé¢*/
 router.get('/api', function(req, res, next) {
   res.render('api', {  });
 });
-/*¹ØÓÚ Ò³Ãæ*/
+/*å…³äºæˆ‘ä»¬ é¡µé¢*/
 router.get('/about', function(req, res, next) {
   res.render('about', {  });
 });
-/* ×¢²áÒ³Ãæ */
+/* æ³¨å†Œ é¡µé¢ */
 router.get('/sign', signController.showSignup);
-/*×¢²áÇëÇó*/
+/* æ³¨å†Œè¯·æ±‚ */
 router.post('/signin', signController.signup);
-/*µÇÂ¼Ò³Ãæ*/
+/* ç™»å½• é¡µé¢ */
 router.get('/login', signController.showLoginin);
-/*µÇÂ¼ÇëÇó*/
+/* ç™»å½• è¯·æ±‚ */
 router.post('/loginin', signController.loginin);
 
 module.exports = router;

@@ -68,8 +68,8 @@
             var data={
                 name:$('#form_name').val(),
                 email:$('#form_email').val(),
-                phone:$('#form_tel').val(),
-                passord:$('#form_psd').val(),
+                telephone:$('#form_tel').val(),
+                password:$('#form_psd').val(),
             }
             var flag = true
             for(var k in data){
@@ -77,23 +77,23 @@
                     flag = false
                 }
             }
-            console.log(data);
+            /*console.log(data);*/
             if(flag){
-                /*ajaxrequest('/signin','POST',data,function(res){
-
-                },function(res){
-
-                })*/
                 $.ajax({
                     url:'/signin',
                     type:'POST',
                     dataType:'JSON',
                     data:data,
                     success:function(result){
+                        console.log(result);
+                        if(result.retcode==1){
 
+                        }else{
+                            alert(result.info[0])
+                        }
                     },
                     error:function(res){
-
+                        console.log(res);
                     }
                 })
             }

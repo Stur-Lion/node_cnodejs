@@ -12,7 +12,7 @@
                         <li>
                             <div class="input-group">
                                 <span for="form_name">用户名</span>
-                                <input type="text" id="form_name" class="control-group" placeholder="">
+                                <input type="text" id="form_name" class="control-group" placeholder="请输入您的用户名">
                             </div>
                         </li>
                         <li>
@@ -50,3 +50,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $('.btn-primary').on('click',function(){
+            var data={
+                username:$('#form_name').val(),
+                password:$('#form_psd').val(),
+            }
+            var flag = true
+            for(var k in data){
+                if(data[k]==''){
+                    flag = false
+                }
+            }
+            /*console.log(data);*/
+            if(flag){
+                $.ajax({
+                    url:'/loginin',
+                    type:'POST',
+                    dataType:'JSON',
+                    data:data,
+                    success:function(result){
+                        console.log(result);
+                        if(result.code==1){
+                            alert(result.info[0])
+                        }else{
+                            alert(result.info[0])
+                        }
+                    },
+                    error:function(res){
+                        console.log(res);
+                    }
+                })
+            }
+        })
+    })
+</script>

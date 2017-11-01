@@ -16,12 +16,7 @@ var userSchema = new mongoose.Schema({
 
 /* 查找 */
 userSchema.statics.getUserInfo = function(data,callback){
-    this.find({
-        username:data.username
-        /*email:data.email,
-        telephone:data.telephone,
-        password:data.password,*/
-    },callback)
+    this.find(data,callback)
 }
 /*添加*/
 userSchema.statics.addUser = function(data,callback){

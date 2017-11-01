@@ -1,6 +1,15 @@
 var common = require('./common.js');
 var userModel = require('../models/user.js')
 
+
+
+/*首页*/
+exports.showIndex = function (req, res, next) {
+    console.log(req.session.username);
+    res.render('index', {  });
+}
+
+
 /*注册 页面 */
 exports.showSignup = function (req, res, next) {
     res.render('sign', {  });
@@ -52,7 +61,26 @@ exports.showLoginin = function (req, res, next) {
 
 /* 登录 */
 exports.loginin = function (req, res, next) {
-
+    var formData = req.body;
+    userModel.getUserInfo({
+        username:formData.username,
+    }, function (err,data) {
+        if(err){
+            throw err
+        }
+        /*console.log(data);*/
+        if(data.length==1){
+            if(data[0].password==formData.password){
+                res.json({code:1,info:['登陆成功'],data:[]})
+                req.session.username = formData.username;
+                console.log(req.session.username);
+            }else{
+                res.json({code:1,info:['密码错误'],data:[]})
+            }
+        }else if(data.length==0){
+            res.json({code:1,info:['用户名不存在'],data:[]})
+        }
+    })
 }
 
 /* 登出 */

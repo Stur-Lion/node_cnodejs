@@ -5,9 +5,7 @@ var signController = require('./../controllers/sign.js')
 
 /* GET home page. */
 /*首页*/
-router.get('/', function(req, res, next) {
-  res.render('index', {  });
-});
+router.get('/', signController.showIndex);
 /* 新手入门 页面 */
 router.get('/newsign', function(req, res, next) {
   res.render('newsign', {  });

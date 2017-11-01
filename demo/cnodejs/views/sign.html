@@ -66,7 +66,7 @@
     $(function () {
         $('.btn-primary').on('click',function(){
             var data={
-                name:$('#form_name').val(),
+                username:$('#form_name').val(),
                 email:$('#form_email').val(),
                 telephone:$('#form_tel').val(),
                 password:$('#form_psd').val(),
@@ -86,8 +86,8 @@
                     data:data,
                     success:function(result){
                         console.log(result);
-                        if(result.retcode==1){
-
+                        if(result.code==1){
+                            alert(result.info[0])
                         }else{
                             alert(result.info[0])
                         }

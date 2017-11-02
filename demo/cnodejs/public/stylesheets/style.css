@@ -21,6 +21,9 @@
 #head_input:focus{
   background-color: #fff;
 }
+.nav>li>a{
+  padding: 14px 13px;
+}
 
 /*Ê×Ò³*/
 .indexPage .panel-heading ul li{

@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var engine = require('ejs-mate');
-var session = require('express-session')
+var session = require('express-session');
+
 
 var index = require('./routes/index');
 //var users = require('./routes/users');
@@ -17,12 +18,6 @@ app.engine('html', engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-/*session*/
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}))
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -31,6 +26,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('./public'));
+app.use(session({
+  secret: 'database',
+  resave: true,
+  saveUninitialized: true
+}))
 
 app.use('/', index);
 //app.use('/users', users);

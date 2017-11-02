@@ -71,9 +71,8 @@ exports.loginin = function (req, res, next) {
         /*console.log(data);*/
         if(data.length==1){
             if(data[0].password==formData.password){
-                res.json({code:1,info:['登陆成功'],data:[]})
                 req.session.username = formData.username;
-                console.log(req.session.username);
+                res.json({code:1,info:['登陆成功'],data:[]})
             }else{
                 res.json({code:1,info:['密码错误'],data:[]})
             }

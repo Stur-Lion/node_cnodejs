@@ -70,6 +70,9 @@
   padding: 5px;
   font-size: 30px;
 }
-.about_box .markdown-text .p {
-  margin-top: 15px;
+.about_box .markdown-text p {
+  margin-top: 10px;
+}
+.about_box .markdown-text p a {
+  color: #08c;
 }

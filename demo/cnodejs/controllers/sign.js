@@ -8,7 +8,6 @@ exports.showIndex = function (req, res, next) {
     res.render('index', {  });
 }
 
-
 /*注册 页面 */
 exports.showSignup = function (req, res, next) {
     res.render('sign', {  });
@@ -85,4 +84,9 @@ exports.loginin = function (req, res, next) {
 exports.loginout = function (req, res, next) {
     req.session.destroy();
     res.redirect('/');
+}
+
+/* 发表文章 页面 */
+exports.messagePage = function (req, res, next) {
+    res.render('addmessagePage',{})
 }

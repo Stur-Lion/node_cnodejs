@@ -28,5 +28,8 @@ router.get('/login', signController.showLoginin);
 router.post('/loginin', signController.loginin);
 /* 退出 */
 router.get('/loginout', signController.loginout);
+/* 发表文章 页面 */
+router.get('/messagePage',signController.messagePage)
+
 
 module.exports = router;

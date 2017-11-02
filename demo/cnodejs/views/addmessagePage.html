@@ -2,45 +2,24 @@
 
 <div class="container">
     <div class="row">
-
+        <div class="col-xs-10 col-xs-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    发表动态
+                </div>
+                <div class="panel-body">
+                    <p class="h3">文章标题</p>
+                    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    <br/>
+                    <p class="h3">文章内容</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
     $(function () {
-        $('.btn-primary').on('click',function(){
-            var data={
-                name:$('#form_name').val(),
-                email:$('#form_email').val(),
-                phone:$('#form_tel').val(),
-                passord:$('#form_psd').val(),
-            }
-            var flag = true
-            for(var k in data){
-                if(data[k]==''){
-                    flag = false
-                }
-            }
-            console.log(data);
-            if(flag){
-                /*ajaxrequest('/signin','POST',data,function(res){
 
-                },function(res){
-
-                })*/
-                $.ajax({
-                    url:'/signin',
-                    type:'POST',
-                    dataType:'JSON',
-                    data:data,
-                    success:function(result){
-
-                    },
-                    error:function(res){
-
-                    }
-                })
-            }
-        })
     })
 </script>

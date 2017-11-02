@@ -26,5 +26,7 @@ router.post('/signin', signController.signup);
 router.get('/login', signController.showLoginin);
 /* 登录 请求 */
 router.post('/loginin', signController.loginin);
+/* 退出 */
+router.get('/loginout', signController.loginout);
 
 module.exports = router;

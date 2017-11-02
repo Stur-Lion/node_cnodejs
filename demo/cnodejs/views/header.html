@@ -25,8 +25,13 @@
                 <li><a href="/newsign">新手入门</a></li>
                 <li><a href="/api">API</a></li>
                 <li><a href="/about">关于</a></li>
-                <li><a href="/sign">注册</a></li>
-                <li><a href="/login">登录</a></li>
+                <% if(username){ %>
+                    <li><a href="javascript:;">欢迎你：<%= username %></a></li>
+                    <li><a href="/loginout">退出</a></li>
+                <% } else{ %>
+                    <li><a href="/sign">注册</a></li>
+                    <li><a href="/login">登录</a></li>
+                <% } %>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

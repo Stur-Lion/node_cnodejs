@@ -31,7 +31,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }))
-
+app.use(function(req, res, next) {
+  app.locals.username = req.session.username
+  next();
+});
 app.use('/', index);
 //app.use('/users', users);
 

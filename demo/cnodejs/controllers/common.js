@@ -21,9 +21,3 @@ exports.validFrom = function(type,con){
     }
     return true
 }
-
-exports.session = function (data,res) {
-    if(data==undefined&&data==''){
-        res.render('/sign')
-    }
-}

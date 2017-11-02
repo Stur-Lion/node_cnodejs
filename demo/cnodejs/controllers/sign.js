@@ -5,7 +5,6 @@ var userModel = require('../models/user.js')
 
 /*首页*/
 exports.showIndex = function (req, res, next) {
-    console.log(req.session.username);
     res.render('index', {  });
 }
 
@@ -83,6 +82,7 @@ exports.loginin = function (req, res, next) {
 }
 
 /* 登出 */
-exports.signout = function (req, res, next) {
-
+exports.loginout = function (req, res, next) {
+    req.session.destroy();
+    res.redirect('/');
 }

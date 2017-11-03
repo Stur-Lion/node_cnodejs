@@ -8,10 +8,13 @@
                     发表动态
                 </div>
                 <div class="panel-body">
-                    <p class="h3">文章标题</p>
-                    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    <p class="h3">&nbsp;文章标题</p>
+                    <br/>
+                    <input type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
                     <br/>
                     <p class="h3">文章内容</p>
+                    <textarea id="editor" placeholder="Balabala" autofocus></textarea>
+
                 </div>
             </div>
         </div>
@@ -20,6 +23,10 @@
 
 <script>
     $(function () {
-
+        //富文本编辑器
+        var editor = new Simditor({
+            textarea: $('#editor')
+            //optional options
+        });
     })
 </script>

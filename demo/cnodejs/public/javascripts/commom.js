@@ -15,3 +15,12 @@ function ajaxrequest(url,type,data,succ,error){
         }
     })
 }
+
+function changeToObject(str) {
+    var date = str.replace(/&quot;/g, '"');
+    date = date.replace(/\"\{\"/g, '{"');
+    date = date.replace(/\"\[\"/g, '["');
+    date = date.replace(/\"\}\"/g, '"}');
+    date = date.replace(/\"\]\"/g, '"]');
+    return eval('(' + date + ')')
+}

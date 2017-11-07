@@ -1,5 +1,10 @@
 <%- layout('layout')%>
-
+<link href="/editor/themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/editor/third-party/jquery.min.js"></script>
+<script type="text/javascript" src="/editor/third-party/template.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/editor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/editor/_examples/editor_api.js"></script>
+<script type="text/javascript" src="/editor/lang/zh-cn/zh-cn.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
@@ -8,12 +13,13 @@
                     发表动态
                 </div>
                 <div class="panel-body">
-                    <p class="h3">&nbsp;文章标题</p>
+                    <p class="h3" userId="<%= username %>">&nbsp;文章标题</p>
                     <br/>
-                    <input type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1" id="title">
                     <br/>
                     <p class="h3">文章内容</p>
-                    <textarea id="editor" placeholder="Balabala" autofocus></textarea>
+                    <script type="text/plain" id="myEditor" style="width:100%;height:240px;"></script>
+                    <button type="button" class="btn btn-primary" style="margin-top: 25px">提交</button>
 
                 </div>
             </div>
@@ -23,10 +29,45 @@
 
 <script>
     $(function () {
+        var username = '<%= username %>';
         //富文本编辑器
-        var editor = new Simditor({
-            textarea: $('#editor')
-            //optional options
+        var um = UM.getEditor('myEditor');
+        um.addListener('blur',function(){
+            $('#focush2').html('编辑器失去焦点了')
         });
+        um.addListener('focus',function(){
+            $('#focush2').html('')
+        });
+
+
+        /*提交内容*/
+        $('button').on('click', function () {
+            if(username=='undefined'){
+                alert('请先登录')
+                return
+            }
+            var content = UM.getEditor('myEditor').getContent();
+            var data = {
+                username:username,
+                title:$('#title').val(),
+                content:content
+            }
+            console.log(data);
+            $.ajax({
+                url:'/messagePage/add',
+                data:data,
+                type:'POST',
+                dataType:'JSON',
+                success: function (result) {
+                    console.log(result);
+                    if(result.code==1){
+                        alert(result.info[0])
+                        location.reload()
+                    }else{
+                        alert(result.info[0])
+                    }
+                }
+            })
+        })
     })
 </script>

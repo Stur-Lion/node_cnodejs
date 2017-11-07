@@ -6,7 +6,13 @@ var index = 0
 
 /*首页*/
 exports.showIndex = function (req, res, next) {
-    res.render('index', {  });
+    messageModel.findMessage({}, function (err,data) {
+        if(err){
+            throw err
+        }
+        console.log(data);
+        res.render('index', { list:data });
+    })
 }
 
 /*注册 页面 */

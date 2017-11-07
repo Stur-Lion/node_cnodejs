@@ -30,6 +30,8 @@ router.post('/loginin', signController.loginin);
 router.get('/loginout', signController.loginout);
 /* 发表文章 页面 */
 router.get('/messagePage',signController.messagePage)
+/* 发表文章 请求 */
+router.post('/messagePage/add',signController.addmessagePage)
 
 
 module.exports = router;

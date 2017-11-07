@@ -1,7 +1,8 @@
 var common = require('./common.js');
 var userModel = require('../models/user.js')
+var messageModel = require('../models/message.js')
 
-
+var index = 0
 
 /*首页*/
 exports.showIndex = function (req, res, next) {
@@ -34,14 +35,15 @@ exports.signup = function (req, res, next) {
         if(err){
             throw err
         }
-        console.log(data);
+        console.log(index);
+        formData.userId = index++
+        console.log(formData);
         if(data.length==0){
             userModel.addUser(formData,function(err,data){
                 if(err){
                     throw err
                     res.json({code:1,info:['注册失败'],data:[]})
                 }
-                console.log(data);
                 if(typeof data=='object'){
                     res.json({code:1,info:['注册成功'],data:[]})
                 }
@@ -66,7 +68,6 @@ exports.loginin = function (req, res, next) {
         if(err){
             throw err
         }
-        /*console.log(data);*/
         if(data.length==1){
             if(data[0].password==formData.password){
                 req.session.username = formData.username;
@@ -88,5 +89,29 @@ exports.loginout = function (req, res, next) {
 
 /* 发表文章 页面 */
 exports.messagePage = function (req, res, next) {
-    res.render('addmessagePage',{})
+    console.log(req.session.userId);
+    res.render('addmessagePage',{ userId:req.session.username })
+}
+
+/* 发表文章 请求 */
+exports.addmessagePage = function (req, res, next) {
+    var adddata={}
+    for(var k in req.body){
+        adddata[k] = req.body[k]
+    }
+    adddata.goodZan = 0;
+    adddata.seeNum = 0;
+    adddata.sayNum = 0;
+
+    messageModel.addMessage(adddata,function(err,data){
+        if(err){
+            throw err
+            res.json({code:1,info:['添加失败'],data:[]})
+        }
+        if(typeof data=='object'){
+            res.json({code:1,info:['添加成功'],data:[]})
+        }
+
+    })
+
 }

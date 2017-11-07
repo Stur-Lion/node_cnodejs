@@ -14,14 +14,24 @@
                         <li>客户端测试</li>
                     </ul>
                 </div>
-                <div class="panel-body">
-                    <ul>
+                <div class="panel-body" style="padding-top: 0">
+                    <ul id="indexUl">
                         <% for(var i=0;i < list.length;i++){ %>
                         <li>
                             <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2064942903,3266514933&fm=27&gp=0.jpg" alt="" style="width: 30px;height: 30px;display: inline-block"/>
-                            <span><span><%= list[i]['sayNum'] %></span>/ <%= list[i]['seeNum'] %></span>
-                            <span><%= list[i]['title'] %></span>
-                            <span><%= list[i]['goodZan'] %></span>
+                            <span class="saySeeNum">
+                                <span class="sayNum">
+                                    <%= list[i]['sayNum'] %>
+                                </span>
+                                / <%= list[i]['seeNum'] %>
+                            </span>
+                            <span class="title">
+                                <%= list[i]['title'] %>
+                            </span>
+                            <span class="goodZan">
+                                <a href="javascript:;"><img src="/images/timg.jpg" alt=""/></a>
+                                <%= list[i]['goodZan'] %>
+                            </span>
                         </li>
                         <% } %>
                     </ul>

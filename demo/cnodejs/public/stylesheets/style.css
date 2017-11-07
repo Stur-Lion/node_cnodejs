@@ -76,3 +76,28 @@
 .about_box .markdown-text p a {
   color: #08c;
 }
+/*首页*/
+#indexUl {
+  padding-top: 0;
+}
+#indexUl li {
+  border-bottom: 1px solid #ccc;
+}
+#indexUl li .saySeeNum {
+  min-width: 60px;
+  display: inline-block;
+}
+#indexUl li .sayNum {
+  color: #9e78c0;
+}
+#indexUl li .title {
+  padding-left: 20px;
+}
+#indexUl li .goodZan {
+  float: right;
+}
+#indexUl li img {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}

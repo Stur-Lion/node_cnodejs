@@ -1,6 +1,8 @@
 var common = require('./common.js');
 var userModel = require('../models/user.js')
-var messageModel = require('../models/message.js')
+var messageModel = require('../models/message.js');
+var path = require('path');
+var fs = require('fs');
 
 var index = 0
 
@@ -60,6 +62,7 @@ exports.signup = function (req, res, next) {
     })
 }
 
+
 /*登录 页面*/
 exports.showLoginin = function (req, res, next) {
     res.render('login', {  });
@@ -77,6 +80,7 @@ exports.loginin = function (req, res, next) {
         if(data.length==1){
             if(data[0].password==formData.password){
                 req.session.username = formData.username;
+                req.session.logo = data[0].avtor;
                 res.json({code:1,info:['登陆成功'],data:[]})
             }else{
                 res.json({code:1,info:['密码错误'],data:[]})
@@ -121,3 +125,46 @@ exports.addmessagePage = function (req, res, next) {
     })
 
 }
+
+/* 上传图片 */
+exports.fileupload = function (req, res, next) {
+    if (req.busboy) {
+        req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+            /*var newFilename = String((new Date()).getTime())+path.extname(filename);*/
+            var newFilename = req.session.username+'.png'
+            var filePath = __dirname + '/../public/avtor/'+ newFilename;
+            var url = '/avtor/'+newFilename;
+
+            file.pipe(fs.createWriteStream(filePath));
+            file.on('end', function(){
+                req.session.logo = url;
+                userModel.updateInformation({username:req.session.username},{$set:{avtor:url}},function(err,data){
+                    console.log(data);
+                    res.json({success: true, url: url});
+                })
+            })
+        });
+        req.pipe(req.busboy);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

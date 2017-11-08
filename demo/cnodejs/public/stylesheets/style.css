@@ -21,8 +21,46 @@
 #head_input:focus {
   background-color: #fff;
 }
-.nav > li > a {
-  padding: 14px 13px;
+.haeder .navbar-default .navbar-nav > li > a {
+  padding: 15px 13px;
+  color: white;
+}
+.downMenu {
+  display: none;
+  width: 150%;
+  position: absolute;
+  z-index: 100;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  top: 50px;
+  left: 0;
+}
+.downMenu li {
+  border-bottom: 1px solid #ccc;
+}
+.downMenu li a {
+  padding: 8px 25px;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+#logo {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+#fileupload {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 /*  */
 .indexPage .panel-heading ul li {

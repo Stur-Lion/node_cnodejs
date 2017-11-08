@@ -12,7 +12,8 @@ var userSchema = new mongoose.Schema({
     email: String,
     telephone:String,
     password:String,
-    userId:Number
+    userId:Number,
+    avtor:String
 })
 
 
@@ -24,6 +25,11 @@ userSchema.statics.getUserInfo = function(data,callback){
 /* 添加用户 */
 userSchema.statics.addUser = function(data,callback){
     this.create(data,callback)
+}
+
+/* 修改信息 */
+userSchema.statics.updateInformation = function(conditions,updates,callback){
+    this.update(conditions,updates,callback)
 }
 
 module.exports = mongoose.model('userlist',userSchema)

@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var engine = require('ejs-mate');
 var session = require('express-session');
+var busboy = require('connect-busboy');
 
 
 var index = require('./routes/index');
@@ -21,6 +22,7 @@ app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(busboy());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,7 +34,8 @@ app.use(session({
   saveUninitialized: true
 }))
 app.use(function(req, res, next) {
-  app.locals.username = req.session.username
+  app.locals.username = req.session.username;
+  app.locals.logo = req.session.logo;
   next();
 });
 app.use('/', index);

@@ -32,6 +32,9 @@ router.get('/loginout', signController.loginout);
 router.get('/messagePage',signController.messagePage)
 /* 发表文章 请求 */
 router.post('/messagePage/add',signController.addmessagePage)
+/* 上传*/
+router.post('/file/uploading' ,signController.fileupload);
+
 
 
 module.exports = router;

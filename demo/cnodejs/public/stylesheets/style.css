@@ -120,6 +120,7 @@
 }
 #indexUl li {
   border-bottom: 1px solid #ccc;
+  padding: 5px 0;
 }
 #indexUl li .saySeeNum {
   min-width: 60px;
@@ -129,7 +130,7 @@
   color: #9e78c0;
 }
 #indexUl li .title {
-  padding-left: 20px;
+  /*padding-left: 12px;*/
 }
 #indexUl li .goodZan {
   float: right;

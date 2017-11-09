@@ -3,8 +3,10 @@ var userModel = require('../models/user.js')
 var messageModel = require('../models/message.js');
 var path = require('path');
 var fs = require('fs');
+var _ = require('../node_modules/lodash');
 
-var index = 0
+var index = 0;//user
+var messageindex = 0;//message
 
 /*首页*/
 exports.showIndex = function (req, res, next) {
@@ -13,6 +15,9 @@ exports.showIndex = function (req, res, next) {
             throw err
         }
         console.log(data);
+        data = _.sortBy(data, function(item) {
+            return -item.messageId;
+        });
         res.render('index', { list:data });
     })
 }
@@ -112,17 +117,29 @@ exports.addmessagePage = function (req, res, next) {
     adddata.goodZan = 0;
     adddata.seeNum = 0;
     adddata.sayNum = 0;
-
-    messageModel.addMessage(adddata,function(err,data){
+    /*adddata.avtor*/
+    userModel.getUserInfo({username:adddata.username},function(err,result){
         if(err){
             throw err
-            res.json({code:1,info:['添加失败'],data:[]})
         }
-        if(typeof data=='object'){
-            res.json({code:1,info:['添加成功'],data:[]})
-        }
+        console.log(result);
+        adddata.avtor = result[0].avtor;
+        messageModel.findMessage({},function(err,data){
+            adddata.messageId = data.length;
+            messageModel.addMessage(adddata,function(err,data){
+                if(err){
+                    throw err
+                    res.json({code:1,info:['添加失败'],data:[]})
+                }
+                if(typeof data=='object'){
+                    res.json({code:1,info:['添加成功'],data:[]})
+                }
 
+            })
+        })
     })
+
+
 
 }
 
@@ -148,6 +165,10 @@ exports.fileupload = function (req, res, next) {
     }
 }
 
+/* 点赞 */
+exports.thumbsUp = function (req, res, next) {
+    console.log(req.body);
+}
 
 
 

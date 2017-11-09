@@ -26,3 +26,24 @@
 </div>
 </body>
 </html>
+<script>
+    $(function () {
+        $('#downSelectMenu').on('mouseenter', function () {
+            $('.downMenu').stop().fadeIn(500)
+        })
+        $('#downSelectMenu').on('mouseleave', function () {
+            $('.downMenu').stop().fadeOut(500)
+        })
+
+        if($('#fileupload').fileupload){
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                done: function (e, data) {
+                    var imgURL = data.jqXHR.responseJSON.url;
+                    console.log(imgURL);
+                    $('#logo').attr('src',imgURL+'?'+Math.random())
+                }
+            });
+        }
+    })
+</script>

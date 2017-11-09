@@ -14,7 +14,10 @@ var articleSchema = new mongoose.Schema({
     time:String,
     goodZan:Number,
     seeNum:Number,
-    sayNum:Number
+    sayNum:Number,
+    messageId:Number,
+    avtor:String,
+    thumbs:Object
 })
 
 /* 查找所有文章 */

@@ -13,7 +13,8 @@ var userSchema = new mongoose.Schema({
     telephone:String,
     password:String,
     userId:Number,
-    avtor:String
+    avtor:String,
+    thumbs:Object
 })
 
 

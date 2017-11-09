@@ -17,10 +17,10 @@
                 <div class="panel-body" style="padding-top: 0">
                     <ul id="indexUl">
                         <% for(var i=0;i < list.length;i++){ %>
-                        <li>
-                            <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2064942903,3266514933&fm=27&gp=0.jpg" alt="" style="width: 30px;height: 30px;display: inline-block"/>
+                        <li messageId="<%= list[i]['messageId'] %>">
+                            <img src="<%= list[i]['avtor']?list[i]['avtor']:'/images/logo.jpg' %>" alt="" style="width: 30px;height: 30px;display: inline-block;border-radius: 15px;"/>
                             <span class="saySeeNum">
-                                <span class="sayNum">
+                                <span class="sayNum" title="回复数">
                                     <%= list[i]['sayNum'] %>
                                 </span>
                                 / <%= list[i]['seeNum'] %>
@@ -29,7 +29,7 @@
                                 <%= list[i]['title'] %>
                             </span>
                             <span class="goodZan">
-                                <a href="javascript:;"><img src="/images/timg.jpg" alt=""/></a>
+                                <a href="javascript:;" class="zanBottom"><img src="/images/timg.jpg" alt=""/></a>
                                 <%= list[i]['goodZan'] %>
                             </span>
                         </li>
@@ -74,7 +74,7 @@
     $(function () {
         /*获取数据*/
         var listdata = changeToObject('<%= JSON.stringify(list) %>');
-        console.log(listdata);
+        var username = '<%= username %>'
 
 
         $('.topChange li').click(function(){
@@ -82,6 +82,23 @@
         })
         $('.addStats').click(function(){
             window.location.href = '/messagePage'
+        })
+
+        /*点赞*/
+        $('.zanBottom').on('click',function(){
+            var messageid = $(this).parent().parent('li').attr('messageid');
+            if(!username){
+                alert('请先登录')
+                return
+            }
+            ajaxrequest('/thumbsUp','POST',{
+                messageid:messageid,
+                username:username
+            },function(res){
+                console.log(res);
+            },function(){
+
+            })
         })
     })
 </script>

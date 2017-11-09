@@ -34,6 +34,8 @@ router.get('/messagePage',signController.messagePage)
 router.post('/messagePage/add',signController.addmessagePage)
 /* 上传*/
 router.post('/file/uploading' ,signController.fileupload);
+/* 点赞 */
+router.post('/thumbsUp', signController.thumbsUp)
 
 
 

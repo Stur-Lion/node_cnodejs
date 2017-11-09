@@ -14,7 +14,7 @@
                         <li>客户端测试</li>
                     </ul>
                 </div>
-                <div class="panel-body" style="padding-top: 0">
+                <div class="panel-body" style="padding:0 0 20px 0;">
                     <ul id="indexUl">
                         <% for(var i=0;i < list.length;i++){ %>
                         <li messageId="<%= list[i]['messageId'] %>">
@@ -29,7 +29,7 @@
                                 <%= list[i]['title'] %>
                             </span>
                             <span class="goodZan">
-                                <a href="javascript:;" class="zanBottom"><img src="/images/timg.jpg" alt=""/></a>
+                                <i class="iconfont icon-zan" style="cursor: pointer"></i>
                                 <%= list[i]['goodZan'] %>
                             </span>
                         </li>
@@ -74,7 +74,7 @@
     $(function () {
         /*获取数据*/
         var listdata = changeToObject('<%= JSON.stringify(list) %>');
-        var username = '<%= username %>'
+        var username = '<%= username %>';
 
 
         $('.topChange li').click(function(){
@@ -87,7 +87,7 @@
         /*点赞*/
         $('.zanBottom').on('click',function(){
             var messageid = $(this).parent().parent('li').attr('messageid');
-            if(!username){
+            if(!username||username=='undefined'){
                 alert('请先登录')
                 return
             }
@@ -99,6 +99,11 @@
             },function(){
 
             })
+        })
+
+        /*查看详情*/
+        $('#indexUl li').click(function(){
+            window.location.href = '/messageDetail'
         })
     })
 </script>

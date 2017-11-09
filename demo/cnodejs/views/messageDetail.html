@@ -47,10 +47,6 @@
                 content:content
             }
             console.log(data);
-            if(data.title==''||data.content==''){
-                alert('请填写完整内容')
-                return
-            }
             $.ajax({
                 url:'/messagePage/add',
                 data:data,

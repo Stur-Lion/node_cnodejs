@@ -5,9 +5,6 @@ var path = require('path');
 var fs = require('fs');
 var _ = require('../node_modules/lodash');
 
-var index = 0;//user
-var messageindex = 0;//message
-
 /*首页*/
 exports.showIndex = function (req, res, next) {
     messageModel.findMessage({}, function (err,data) {
@@ -48,9 +45,7 @@ exports.signup = function (req, res, next) {
         if(err){
             throw err
         }
-        console.log(index);
-        formData.userId = index++
-        console.log(formData);
+        formData.userId = data.length
         if(data.length==0){
             userModel.addUser(formData,function(err,data){
                 if(err){
@@ -66,7 +61,6 @@ exports.signup = function (req, res, next) {
         }
     })
 }
-
 
 /*登录 页面*/
 exports.showLoginin = function (req, res, next) {
@@ -88,10 +82,10 @@ exports.loginin = function (req, res, next) {
                 req.session.logo = data[0].avtor;
                 res.json({code:1,info:['登陆成功'],data:[]})
             }else{
-                res.json({code:1,info:['密码错误'],data:[]})
+                res.json({code:2,info:['密码错误'],data:[]})
             }
         }else if(data.length==0){
-            res.json({code:1,info:['用户名不存在'],data:[]})
+            res.json({code:3,info:['用户名不存在'],data:[]})
         }
     })
 }
@@ -141,6 +135,11 @@ exports.addmessagePage = function (req, res, next) {
 
 
 
+}
+
+/* 文章详情 页面 */
+exports.messageDetail = function (req, res, next) {
+    res.render('messageDetail', { })
 }
 
 /* 上传图片 */

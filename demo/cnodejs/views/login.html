@@ -75,9 +75,12 @@
                         console.log(result);
                         if(result.code==1){
                             alert(result.info[0])
-                            location.reload()
-                        }else{
+                            window.location.href='/'
+                        }else if(result.code==2){
                             alert(result.info[0])
+                        }else if(result.code==3){
+                            alert(result.info[0]+'请先注册')
+                            window.location.href='/sign'
                         }
                     },
                     error:function(res){

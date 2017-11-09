@@ -144,3 +144,35 @@
   height: 25px;
   display: inline-block;
 }
+/*文章详情*/
+.detail {
+  padding: 15px 10px;
+}
+.detail .bodyTitle {
+  border-bottom: 1px solid #d3d3d3;
+}
+.detail .bodyTitle h2 {
+  font-size: 22px;
+  font-weight: 700;
+  vertical-align: bottom;
+  display: inline-block;
+}
+.detail .bodyTitle .logoTop {
+  background: #80bd01;
+  padding: 2px 4px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 5px;
+}
+.detail .bodyTitle .smallGrayinformation {
+  color: #8d8d8d;
+}
+.detail .bodyTitle .smallGrayinformation li {
+  float: left;
+  list-style: disc;
+  font-size: 12px;
+  margin-left: 25px;
+}
+.detail .bodycontent {
+  padding: 20px;
+}

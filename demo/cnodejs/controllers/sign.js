@@ -3,6 +3,7 @@ var userModel = require('../models/user.js')
 var messageModel = require('../models/message.js');
 var path = require('path');
 var fs = require('fs');
+var url = require('url');
 var _ = require('../node_modules/lodash');
 
 /*首页*/
@@ -139,7 +140,14 @@ exports.addmessagePage = function (req, res, next) {
 
 /* 文章详情 页面 */
 exports.messageDetail = function (req, res, next) {
-    res.render('messageDetail', { })
+    var arg = url.parse(req.url, true).query;
+    console.error(arg)
+    messageModel.findMessage({messageId:arg.messageId},function(err,data){
+        if(err){
+            throw err
+        }
+        res.render('messageDetail', { detail : data[0] })
+    })
 }
 
 /* 上传图片 */

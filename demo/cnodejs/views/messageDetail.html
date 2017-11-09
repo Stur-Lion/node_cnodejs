@@ -1,20 +1,54 @@
 <%- layout('layout')%>
 <div class="container">
     <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
+        <div class="col-xs-9">
+            <div class="panel panel-default">
+                <div class="panel-body detail">
+                    <div class="bodyTitle">
+                        <span class="logoTop">制定</span>
+                        <h2 style="">
+                            <%= detail.title %>
+                        </h2>
+                        <ol class="smallGrayinformation clearfix">
+                            <li>发布于 7 个月前</li>
+                            <li>作者： <%= detail.username %></li>
+                            <li>71468 次浏览</li>
+                            <li>最后一次编辑是 5 个月前</li>
+                        </ol>
+                    </div>
+                    <div class="bodycontent">
+                        <%- detail.content %>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3 hidden-xs">
+            <% if(username){ %>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    发表动态
+                    作者
                 </div>
                 <div class="panel-body">
-                    <p class="h3" userId="<%= username %>">&nbsp;文章标题</p>
-                    <br/>
-                    <input type="text" class="form-control" placeholder="Title" aria-describedby="basic-addon1" id="title">
-                    <br/>
-                    <p class="h3">文章内容</p>
-                    <script type="text/plain" id="myEditor" style="width:100%;height:240px;"></script>
-                    <button type="button" class="btn btn-primary" style="margin-top: 25px">提交</button>
 
+                </div>
+            </div>
+            <% }else{ %>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    CNode：Node.js专业中文社区
+                    <br/>
+                    <br/>
+                    <p>您可以<a href="/login"> 登录 </a>或<a href="/sign"> 注册 </a>,也可以 <br/><button type="button" class="btn btn-info">通过 GitHub 登录</button></p>
+                </div>
+            </div>
+            <% } %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    客户端二维码
+                </div>
+                <div class="panel-body">
+                    <img src="//dn-cnode.qbox.me/FtG0YVgQ6iginiLpf9W4_ShjiLfU" alt="二维码" style="display: block;width: 90%;height: 90%;margin: 0 auto"/>
                 </div>
             </div>
         </div>
@@ -23,45 +57,6 @@
 
 <script>
     $(function () {
-        var username = '<%= username %>';
-        //富文本编辑器
-        var um = UM.getEditor('myEditor');
-        um.addListener('blur',function(){
-            $('#focush2').html('编辑器失去焦点了')
-        });
-        um.addListener('focus',function(){
-            $('#focush2').html('')
-        });
 
-
-        /*提交内容*/
-        $('button').on('click', function () {
-            if(username=='undefined'){
-                alert('请先登录')
-                return
-            }
-            var content = UM.getEditor('myEditor').getContent();
-            var data = {
-                username:username,
-                title:$('#title').val(),
-                content:content
-            }
-            console.log(data);
-            $.ajax({
-                url:'/messagePage/add',
-                data:data,
-                type:'POST',
-                dataType:'JSON',
-                success: function (result) {
-                    console.log(result);
-                    if(result.code==1){
-                        alert(result.info[0])
-                        location.reload()
-                    }else{
-                        alert(result.info[0])
-                    }
-                }
-            })
-        })
     })
 </script>

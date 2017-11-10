@@ -169,8 +169,15 @@ exports.messageDetail = function (req, res, next) {
         messageModel.updateMessage(
             {messageId:arg.messageId},
             {$set:{seeNum:++data[0].seeNum}},function(){
-
-                res.render('messageDetail', { detail : data[0] })
+                userModel.getUserInfo({username:data[0].username},function(err,result){
+                    if(err){
+                        throw err
+                    }
+                    res.render('messageDetail', {
+                        detail : data[0] ,
+                        userInfor : result[0]
+                    })
+                })
             })
     })
 }

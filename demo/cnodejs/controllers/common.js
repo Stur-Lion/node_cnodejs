@@ -21,3 +21,10 @@ exports.validFrom = function(type,con){
     }
     return true
 }
+
+exports.pages = function(data){
+    if(data.length<=10){
+        return ''
+    }
+
+}

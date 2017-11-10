@@ -24,25 +24,17 @@
             </div>
         </div>
         <div class="col-xs-3 hidden-xs">
-            <% if(username){ %>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     作者
                 </div>
                 <div class="panel-body">
-
+                    <img src="<%= userInfor.avtor %>" alt="" id="logo"/>
+                    <span style="padding-left: 10px"><%= userInfor.username %></span>
+                    <div style="padding-top: 10px"><span>积分：</span>150</div>
+                    <div style="padding-top: 10px"> "狼叔说：少抱怨，多思考，未来更美好 "</div>
                 </div>
             </div>
-            <% }else{ %>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    CNode：Node.js专业中文社区
-                    <br/>
-                    <br/>
-                    <p>您可以<a href="/login"> 登录 </a>或<a href="/sign"> 注册 </a>,也可以 <br/><button type="button" class="btn btn-info">通过 GitHub 登录</button></p>
-                </div>
-            </div>
-            <% } %>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     客户端二维码
@@ -57,6 +49,6 @@
 
 <script>
     $(function () {
-
+        var userInfor  = changeToObject('<%= JSON.stringify(userInfor) %>');
     })
 </script>

@@ -176,3 +176,16 @@
 .detail .bodycontent {
   padding: 20px;
 }
+/*新手入门*/
+.h2 {
+  font-weight: 700;
+}
+.mewSignList li .h5 {
+  font-weight: 700;
+  padding-bottom: 12px;
+}
+.mewSignList li a {
+  color: #08c;
+  margin-bottom: 30px;
+  display: block;
+}

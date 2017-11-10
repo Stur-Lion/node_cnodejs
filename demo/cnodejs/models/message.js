@@ -30,6 +30,11 @@ articleSchema.statics.addMessage = function(data,callback){
     this.create(data,callback)
 }
 
+/* 修改文章信息 */
+articleSchema.statics.updateMessage = function(conditions,updates,callback){
+    this.update(conditions,updates,callback)
+}
+
 
 
 

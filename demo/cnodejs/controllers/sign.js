@@ -12,11 +12,31 @@ exports.showIndex = function (req, res, next) {
         if(err){
             throw err
         }
-        console.log(data);
+        var hashSort = url.parse(req.url,true).query;
         data = _.sortBy(data, function(item) {
             return -item.messageId;
         });
-        res.render('index', { list:data });
+        if(hashSort.index==0){
+            data = _.sortBy(data, function(item) {
+                return -item.messageId;
+            });
+        }else if(hashSort.index==1){
+            data = _.sortBy(data, function(item) {
+                return -item.seeNum;
+            });
+        }else if(hashSort.index==2){
+
+        }else if(hashSort.index==3){
+
+        }else if(hashSort.index==4){
+
+        }else if(hashSort.index==5){
+
+        }
+        res.render('index', {
+            list:data,
+            index:hashSort.index?hashSort.index:0
+        });
     })
 }
 
@@ -146,7 +166,12 @@ exports.messageDetail = function (req, res, next) {
         if(err){
             throw err
         }
-        res.render('messageDetail', { detail : data[0] })
+        messageModel.updateMessage(
+            {messageId:arg.messageId},
+            {$set:{seeNum:++data[0].seeNum}},function(){
+
+                res.render('messageDetail', { detail : data[0] })
+            })
     })
 }
 

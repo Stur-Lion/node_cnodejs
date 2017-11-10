@@ -6,12 +6,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <ul class="topChange clearfix">
-                        <li class="active">全部</li>
+                        <li>全部</li>
                         <li>精华</li>
-                        <li>分享</li>
+                        <li>评论</li>
                         <li>问答</li>
-                        <li>招聘</li>
-                        <li>客户端测试</li>
+                        <li>最右</li>
+                        <li>火星文字</li>
+                        <!--排序
+                        1、默认时间
+                        2、查看次数
+                        3、评论次数
+                        4、赞数
+                        5、随意
+                        -->
                     </ul>
                 </div>
                 <div class="panel-body" style="padding:0 0 20px 0;">
@@ -74,10 +81,12 @@
     $(function () {
         /*获取数据*/
         var username = '<%= username %>';
+        var index = '<%= index %>';
+        $('.topChange li').eq(index).addClass('active').siblings('li').removeClass('active');
 
 
         $('.topChange li').click(function(){
-            $(this).addClass('active').siblings('li').removeClass('active')
+            window.location.href = '/?index='+$(this).index()
         })
         $('.addStats').click(function(){
             window.location.href = '/messagePage'
@@ -103,6 +112,9 @@
         /*查看详情*/
         $('#indexUl li').click(function(){
             window.location.href = '/messageDetail?messageId='+$(this).attr('messageid')
+        })
+        $('#sotBySeenum').click(function(){
+            window.location.href = '/?sortBy=seeNum'
         })
     })
 </script>

@@ -29,7 +29,7 @@
                     作者
                 </div>
                 <div class="panel-body">
-                    <img src="<%= userInfor.avtor %>" alt="" id="logo"/>
+                    <img src="<%= userInfor.avtor?userInfor.avtor:'/images/logo.jpg' %>" alt="" id="logo"/>
                     <span style="padding-left: 10px"><%= userInfor.username %></span>
                     <div style="padding-top: 10px"><span>积分：</span>150</div>
                     <div style="padding-top: 10px"> "狼叔说：少抱怨，多思考，未来更美好 "</div>

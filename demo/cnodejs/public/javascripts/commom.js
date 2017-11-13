@@ -24,3 +24,17 @@ function changeToObject(str) {
     date = date.replace(/\"\]\"/g, '"]');
     return eval('(' + date + ')')
 }
+
+function alertTip (data,callback){
+    jeBox.alert(data,{icon: 1}, function(index){
+        jeBox.close(index);
+        callback()
+    });
+}
+
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}

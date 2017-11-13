@@ -5,11 +5,9 @@
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
+        <% for(var i=0;i< Math.ceil(pages);i++){ %>
+            <li class="pages <% if((i+1)==page){ %> active <% } %> "><a href="javascript:;"><%= (i+1) %></a></li>
+        <% } %>
         <li>
             <a href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
@@ -17,3 +15,16 @@
         </li>
     </ul>
 </nav>
+
+<script>
+    $(function(){
+        var pages = Math.ceil('<%= pages %>')
+        console.log(pages);
+        $('.pages a').click(function(){
+            var page = $(this).text();
+            var index = GetQueryString('index')?GetQueryString('index'):0
+            window.location.href = '/?page='+page+'&index='+index
+        })
+        console.log('<%= page %>');
+    })
+</script>

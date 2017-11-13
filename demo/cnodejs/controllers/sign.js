@@ -9,6 +9,7 @@ var _ = require('../node_modules/lodash');
 /*首页*/
 exports.showIndex = function (req, res, next) {
     messageModel.findMessage({}, function (err,data) {
+        var everyNum = 10;
         if(err){
             throw err
         }
@@ -33,9 +34,27 @@ exports.showIndex = function (req, res, next) {
         }else if(hashSort.index==5){
 
         }
+
+        if(!hashSort.page){
+            hashSort.page=1;
+        }
+        if(data.length>everyNum){
+            var pageData = [];
+            for(var i=0;i<everyNum;i++){
+                if(data[(hashSort.page-1)*everyNum+i]){
+                    pageData.push(data[(hashSort.page-1)*everyNum+i])
+                }else{
+                    break
+                }
+            }
+        }else{
+            var pageData = data
+        }
         res.render('index', {
-            list:data,
-            index:hashSort.index?hashSort.index:0
+            list:pageData,
+            index:hashSort.index?hashSort.index:0,
+            pages:data.length/everyNum,
+            page:hashSort.page
         });
     })
 }

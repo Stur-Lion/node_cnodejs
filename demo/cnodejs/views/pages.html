@@ -19,12 +19,10 @@
 <script>
     $(function(){
         var pages = Math.ceil('<%= pages %>')
-        console.log(pages);
         $('.pages a').click(function(){
             var page = $(this).text();
             var index = GetQueryString('index')?GetQueryString('index'):0
             window.location.href = '/?page='+page+'&index='+index
         })
-        console.log('<%= page %>');
     })
 </script>

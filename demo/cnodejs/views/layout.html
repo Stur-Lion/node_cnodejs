@@ -17,13 +17,14 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/javascripts/commom.js"></script>
 
+    <script src="/jeBox/jquery-1.7.2.js"></script>
+    <script src="/jeBox/jquery.jebox.js"></script>
+
     <!--文件上传-->
     <script src="/fileload/vendor/jquery.ui.widget.js"></script>
     <script src="/fileload/jquery.iframe-transport.js"></script>
     <script src="/fileload/jquery.fileupload.js"></script>
 
-    <script src="/jeBox/jquery-1.7.2.js"></script>
-    <script src="/jeBox/jquery.jebox.js"></script>
 
 
 </head>
@@ -43,11 +44,15 @@
             $('.downMenu').stop().fadeOut(500)
         })
 
+        console.log(2);
+        console.log($('#fileupload').fileupload);
         if($('#fileupload').fileupload){
+            console.log(1);
             $('#fileupload').fileupload({
                 dataType: 'json',
                 done: function (e, data) {
-                    var imgURL = data.jqXHR.responseJSON.url;
+                    console.log(data);
+                    var imgURL = data.result.url;
                     console.log(imgURL);
                     $('#logo').attr('src',imgURL+'?'+Math.random())
                 }

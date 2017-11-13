@@ -28,6 +28,10 @@ router.get('/login', signController.showLoginin);
 router.post('/loginin', signController.loginin);
 /* 退出 */
 router.get('/loginout', signController.loginout);
+/* 修改密码 页面*/
+router.get('/changepsdPage',signController.changepsdPage)
+/* 修改密码 */
+router.post('/changepsd',signController.changepsd)
 /* 发表文章 页面 */
 router.get('/messagePage',signController.messagePage)
 /* 发表文章 请求 */

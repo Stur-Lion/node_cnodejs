@@ -117,6 +117,49 @@ exports.loginout = function (req, res, next) {
     res.redirect('/');
 }
 
+/* 修改密码 页面*/
+exports.changepsdPage = function (req, res, next) {
+    res.render('changepsd', {  })
+}
+
+/* 修改密码 */
+exports.changepsd = function (req, res, next) {
+    console.log(req.body);
+    userModel.getUserInfo({username:req.body.username},function(err,data){
+        if(err){
+            throw err
+        }
+        if(data.length>0){
+            console.log(data);
+            if(data[0].password==req.body.oldpassword){
+                userModel.updateInformation({username:req.body.username},
+                    {$set:{password:req.body.newpassword}}, function(err2,result){
+                    console.log(result);
+                    if(err2){
+                        throw err2
+                    }
+                    if(result.nModified==1){
+                        userModel.getUserInfo({username:req.body.username},function(err3,result1){
+                            if(err3){
+                                throw err3
+                            }
+                            if(result1[0].password==req.body.newpassword){
+                                res.json({code:1,info:['修改密码成功'],data:{}})
+                            }else{
+                                res.json({code:0,info:['修改密码失败'],data:{}})
+                            }
+                        })
+                    }
+                })
+            }else{
+                res.json({code:0,info:['原密码错误'],data:{}})
+            }
+        }else{
+            res.json({code:0,info:['无此用户'],data:{}})
+        }
+    })
+}
+
 /* 发表文章 页面 */
 exports.messagePage = function (req, res, next) {
     console.log(req.session.userId);

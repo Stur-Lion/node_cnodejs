@@ -8,6 +8,6 @@
 2. 项目文件夹 node_cnodejs/demo/cnodejs
 3. 开启数据库 mongod --dbpath XXX/node_cnodejs/demo/cnodejs/mongo
 4. 安装依赖 npm/cnpm install
-5. 本地开发环境 访问http://localhost:8080 npm run start
+5. 本地开发环境 访问http://localhost:3000 npm run start
 
 # 项目截图

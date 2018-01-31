@@ -11,3 +11,5 @@
 5. 本地开发环境 访问http://localhost:3000 npm run start
 
 # 项目截图
+![image](https://github.com/cckings/node_cnodejs/blob/master/demo/cnodejs/public/images/1.png?raw=true)
+![image](https://github.com/cckings/node_cnodejs/blob/master/demo/cnodejs/public/images/2.png?raw=true)
